@@ -291,11 +291,12 @@ class RegexURLResolver(LocaleRegexProvider):
             if isinstance(pattern, RegexURLPattern):
                 self._callback_strs.add(pattern.lookup_str)
             p_pattern = pattern.regex.pattern
+            _p_pattern = '%s/' % language_code
             if p_pattern.startswith('^'):
                 p_pattern = p_pattern[1:]
             if isinstance(pattern, RegexURLResolver):
                 if pattern.namespace:
-                    namespaces[pattern.namespace] = (p_pattern, pattern)
+                    namespaces[pattern.namespace] = (p_pattern, pattern, _p_pattern)
                     if pattern.app_name:
                         apps.setdefault(pattern.app_name, []).append(pattern.namespace)
                 else:
@@ -311,8 +312,8 @@ class RegexURLResolver(LocaleRegexProvider):
                                     dict(defaults, **pattern.default_kwargs),
                                 )
                             )
-                    for namespace, (prefix, sub_pattern) in pattern.namespace_dict.items():
-                        namespaces[namespace] = (p_pattern + prefix, sub_pattern)
+                    for namespace, (prefix, sub_pattern, _prefix) in pattern.namespace_dict.items():
+                        namespaces[namespace] = (p_pattern + prefix, sub_pattern, _p_pattern + _prefix)
                     for app_name, namespace_list in pattern.app_dict.items():
                         apps.setdefault(app_name, []).extend(namespace_list)
                 if not getattr(pattern._local, 'populating', False):

@@ -74,9 +74,9 @@ def reverse(viewname, urlconf=None, args=None, kwargs=None, current_app=None):
                 current_path = None
 
             try:
-                extra, resolver = resolver.namespace_dict[ns]
+                extra, resolver, _extra = resolver.namespace_dict[ns]
                 resolved_path.append(ns)
-                ns_pattern = ns_pattern + extra
+                ns_pattern = ns_pattern + _extra
             except KeyError as key:
                 if resolved_path:
                     raise NoReverseMatch(
