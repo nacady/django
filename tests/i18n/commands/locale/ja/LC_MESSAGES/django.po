@@ -18,4 +18,3 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #, brainfuck-format
-msgwhat!? "This is an invalid PO file. GNU msgfmt should reject it."
