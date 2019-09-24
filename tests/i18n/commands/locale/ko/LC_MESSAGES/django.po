@@ -21,4 +21,4 @@ msgstr ""
 #: foo/password_validation.py:17
 #, python-brace-format
 msgid "Your password must contain a symbol: {symbols}"
-msgstr "[Ẏǿŭř ƥȧşşẇǿřḓ ḿŭşŧ ƈǿƞŧȧīƞ ȧ şẏḿƀǿŀ: {şẏḿƀǿŀş} ΐΰϖΐ ϖΐẛϕϐ]"
+msgstr ""
